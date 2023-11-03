@@ -161,7 +161,7 @@ class etl_ap:
     def create_dictionary(self, data):
         my_dictionary = {}
         for i in range(len(self.variables)):
-            key = variables[i]
+            key = self.variables[i]
             value = data[i]
             my_dictionary[key] = value
         return my_dictionary
