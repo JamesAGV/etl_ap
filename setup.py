@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='etl_ap',
-    version='0.1.2',
+    version='0.1.3',
     description='ETL para Andina Pack - Elico Group',
     author='James Garcia',
     author_email='jamgarciavi@unal.edu.co',
@@ -11,6 +11,6 @@ setup(
     install_requires=[
         'pytz',
         'requests',
-        'snap7',
+        'python-snap7',
     ],
 )
