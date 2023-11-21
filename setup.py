@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='etl_ap',
-    version='0.1.4',
+    version='0.1.5',
     description='ETL para Andina Pack - Elico Group',
     author='James Garcia',
     author_email='jamgarciavi@unal.edu.co',

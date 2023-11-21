@@ -15,7 +15,7 @@ class etl_ap:
     Formateo de datos.
     """
 
-    def __init__(self, ip:str, rack:int, slot:int, name:str, route_log:str, url_api:str, token:str, variables:list, db:int, period:int=60, verbose:bool=False, port:int=102):             
+    def __init__(self, ip:str, rack:int, slot:int, name:str, route_log:str, url_api:str, token:str, variables:list, db:int, period:int=60, verbose:bool=False, quantity_bytes=266, port:int=102):             
         """
         Constructo de la clase.
         :param ip: Dirección ip del PLC
@@ -35,6 +35,7 @@ class etl_ap:
         self.db = db
         self.period = period
         self.verbose = verbose
+        self.quantity_bytes = quantity_bytes
         self.port = port
 
     def get_LReal(self, quantity: int, offset: int, data: bytearray):
@@ -193,7 +194,7 @@ class etl_ap:
         self.log(message='Inicio de ejecución de la ETL')
         while True:
             timestamp = datetime.now(colombia_tz)
-            array_bytes = self.get_bytes_plc(db=self.db, offset=0, quantity_bytes=264)
+            array_bytes = self.get_bytes_plc(db=self.db, offset=0, quantity_bytes=self.quantity_bytes)
             if array_bytes:
                 data = [timestamp.strftime("%Y-%m-%dT%H:%M:%S%z")] + self.format_bytes(array_bytes=array_bytes)
                 self.api_post(data=data)
